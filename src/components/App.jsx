@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { CssBaseline } from '@mui/material';
-import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import useStyles from './styles';
 

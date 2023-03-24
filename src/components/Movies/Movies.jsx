@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Box, CircularProgress, useMediaQuery, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 
 import { useGetMoviesQuery } from '../services/TMDB';
-import { Movie, MovieList, Pagination, FeaturedMovie } from '..';
+// import { MovieList, Pagination, FeaturedMovie } from '..';
+import MovieList from '../MovieList/MovieList';
+import FeaturedMovie from '../FeaturedMovie/FeaturedMovie';
+import Pagination from '../Pagination/Pagination';
 
 const Movies = () => {
   const [page, setPage] = useState(1);

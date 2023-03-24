@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-import { Modal, Typography, Button, ButtonGroup, Grid, Box, CircularProgress, useMediaQuery, Rating } from '@mui/material';
-import { Movie as MovieIcon, Theaters, Language, PlusOne, Favority, FavorityBorderOutlined, Remove, ArrowBack, Favorite, FavoriteBorderOutlined, Loop } from '@mui/icons-material';
+import { Modal, Typography, Button, ButtonGroup, Grid, Box, CircularProgress, Rating } from '@mui/material';
+import { Movie as MovieIcon, Theaters, Language, PlusOne, Remove, ArrowBack, Favorite, FavoriteBorderOutlined } from '@mui/icons-material';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
@@ -10,7 +10,8 @@ import { selectGenreOrCategory } from '../features/currentGenreOrCategory';
 import { useGetListQuery, useGetMovieQuery, useGetRecommendationsQuery } from '../services/TMDB';
 import { userSelector } from '../features/auth';
 
-import { MovieList } from '..';
+// import { MovieList } from '..';
+import MovieList from '../MovieList/MovieList';
 
 import useStyles from './styles';
 import genreIcons from '../../assets/genres';
@@ -66,7 +67,7 @@ const MovieInformation = () => {
     setIsMovieWatchlisted((prev) => !prev);
   };
 
-  if (isFetching) {
+  if (isFetching || isRecommendationsFetching) {
     return (
       <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
         <CircularProgress size="8rem" />
@@ -110,7 +111,8 @@ const MovieInformation = () => {
           </Typography>
         </Grid>
         <Grid item className={classes.genresContainer}>
-          {data?.genres.map((genre, i) => (
+          {/* removing i in map */}
+          {data?.genres.map((genre) => (
             <Link key={genre.name} className={classes.links} to="/" onClick={() => dispatch(selectGenreOrCategory(genre.id))}>
               <img src={genreIcons[genre.name.toLowerCase()]} className={classes.genreImage} height={30} />
               <Typography variant="subtitle1" align="center" gutterBottom>
@@ -127,7 +129,8 @@ const MovieInformation = () => {
         </Typography>
         <Typography variant="h5" align="center" gutterBottom>
           <Grid item container spacing={2}>
-            {data && data.credits?.cast?.map((cast, i) => (
+            {/* removing i in map */}
+            {data && data.credits?.cast?.map((cast) => (
               cast.profile_path && (
                 <Grid item key={cast.id} xs={4} sm={4} md={3} lg={2} component={Link} to={`/actors/${cast.id}`} style={{ textDecoration: 'none' }}>
                   <img className={classes.castImage} src={`https://image.tmdb.org/t/p/w500${cast.profile_path}`} alt={cast.name} />

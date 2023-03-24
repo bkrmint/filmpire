@@ -5,10 +5,10 @@ import useStyles from './styles';
 import Movie from '../Movie/Movie';
 
 const RatedCards = ({ title, data }) => {
-  console.log('RatedCards');
-  console.log('data', data);
+  // console.log('RatedCards');
+  // console.log('data', data);
   const classes = useStyles();
-
+  
   return (
     <Box>
       <Typography variant="h5" gutterBottom> {title} </Typography>

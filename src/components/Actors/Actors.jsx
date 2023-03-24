@@ -19,7 +19,7 @@ const Actors = () => {
 
   const { data: movies, isFetching: isFetchingMovies, error: errorMovies } = useGetMoviesByActorIdQuery({ actorId: id, page });
 
-  if (isFetching) {
+  if (isFetching || isFetchingMovies) {
     return (
       <Box display="flex" justifyContent="center">
         <CircularProgress size="8rem" />
@@ -27,7 +27,7 @@ const Actors = () => {
     );
   }
 
-  if (error) {
+  if (error || errorMovies) {
     return (
       <Box display="flex" justifyContent="center" alignItems="center">
         <Button

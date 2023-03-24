@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AppBar, Toolbar, IconButton, Drawer, Button, Avatar, useMediaQuery } from '@mui/material';
 import { Menu, AccountCircle, Brightness4, Brightness7 } from '@mui/icons-material';
@@ -6,7 +6,9 @@ import { useTheme } from '@mui/material/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { ColorModeContext } from '../../utils/ToggleColorMode';
 import useStyles from './styles';
-import { Sidebar, Search } from '..';
+// import { Sidebar, Search } from '..';
+import Sidebar from '../Sidebar/Sidebar';
+import Search from '../Search/Search';
 import { fetchToken, createSessionId, moviesApi } from '../../utils';
 import { setUser, userSelector } from '../features/auth';
 
